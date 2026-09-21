@@ -1,0 +1,61 @@
+# OAT (Open Agent Teams) role map for apk-forge-pipeline.
+# Picked over KageOps (AGPL, weaker GitHub-native loop) and Captain Claw
+# (general workspace, not a coding merge-queue). OAT is MIT, Ollama-native,
+# ships supervisor + workers + reviewer + merge-queue + gh CLI CI watch,
+# and publishes Linux arm64 binaries for Ampere A1.
+
+framework: oat
+repo: https://github.com/therockstarplaylist-bot/apk-forge-pipeline
+default_model:
+  provider: ollama
+  host_env: OLLAMA_HOST
+  model_env: OLLAMA_MODEL
+  fallback: llama3.1:8b
+cloud_swap:
+  # If LLM_API_BASE is set, every role uses it instead of Ollama.
+  base_env: LLM_API_BASE
+  key_env: LLM_API_KEY
+  model_env: LLM_MODEL
+
+roles:
+  manager:
+    oat_agent: supervisor
+    model: ${OLLAMA_MODEL}
+    tools: [gh_issue, gh_pr_review, gh_pr_merge, gh_actions]
+    sop: |
+      Pick the oldest open issue labeled agent.
+      Assign it. Wait for Coder PR. Wait for Tester green.
+      Merge squash on green. Close the issue. Repeat.
+
+  coder:
+    oat_agent: worker
+    model: ${OLLAMA_MODEL}
+    tools: [git_worktree, edit, gh_pr_create]
+    sop: |
+      Implement the assigned issue on a feature branch.
+      Keep the Android debug build compiling.
+      Open a PR against main linked to the issue.
+
+  tester:
+    oat_agent: verification
+    model: ${OLLAMA_MODEL}
+    tools: [gh_actions, gh_pr_comment]
+    sop: |
+      Watch the Build Debug APK workflow on the PR.
+      Comment pass/fail with the run URL.
+      Never merge.
+
+  designer:
+    oat_agent: worker
+    model: ${OLLAMA_MODEL}
+    tools: [edit]
+    sop: |
+      Touch only res/ layout, color, string, and drawable files.
+      Keep contrast AA. No new Gradle deps unless Coder agrees.
+
+loop:
+  1: manager_picks_issue
+  2: coder_opens_pr
+  3: tester_reports_actions
+  4: manager_merges_on_green
+  5: repeat

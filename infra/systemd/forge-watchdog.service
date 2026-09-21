@@ -1,0 +1,7 @@
+[Unit]
+Description=Forge agent watchdog
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/forge-watchdog

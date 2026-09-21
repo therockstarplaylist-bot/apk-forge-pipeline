@@ -1,0 +1,20 @@
+[Unit]
+Description=Forge agent loop
+After=network-online.target docker.service ollama.service
+Wants=network-online.target
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=forge
+Group=forge
+WorkingDirectory=/opt/forge/apk-forge-pipeline
+EnvironmentFile=/etc/forge/agent.env
+ExecStart=/usr/bin/python3.11 /opt/forge/apk-forge-pipeline/agents/loop.py
+Restart=always
+RestartSec=8
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
