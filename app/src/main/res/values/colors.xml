@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="forge_bg">#0E1114</color>
+    <color name="forge_fg">#E8ECE9</color>
+    <color name="forge_muted">#8B9590</color>
+    <color name="forge_accent">#7A93A7</color>
+    <color name="forge_panel">#171C21</color>
+    <color name="forge_stroke">#2A3238</color>
+</resources>
