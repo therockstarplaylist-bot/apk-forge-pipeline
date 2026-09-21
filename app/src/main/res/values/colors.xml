@@ -6,4 +6,10 @@
     <color name="forge_accent">#7A93A7</color>
     <color name="forge_panel">#171C21</color>
     <color name="forge_stroke">#2A3238</color>
+    <color name="forge_preview">#8B9590</color>
+    <color name="forge_display">#E8ECE9</color>
+    <color name="forge_key">#1E252C</color>
+    <color name="forge_key_op">#24313C</color>
+    <color name="forge_key_eq">#3D6B8A</color>
+    <color name="forge_key_fn">#2A2420</color>
 </resources>
