@@ -1,0 +1,54 @@
+# Gradle / Android
+.gradle/
+build/
+**/build/
+local.properties
+*.iml
+.idea/
+.cxx/
+.externalNativeBuild/
+captures/
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+*.hprof
+
+# Signing — never commit keys
+*.jks
+*.keystore
+*.keystore.properties
+keystore.properties
+google-services.json
+
+# Secrets / env
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.p12
+credentials.json
+oci_api_key.pem
+~/.oci/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
