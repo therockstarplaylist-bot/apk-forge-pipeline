@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
                 BuildConfig.VERSION_CODE,
             )
         findViewById<TextView>(R.id.buildType).text = BuildConfig.BUILD_TYPE
-        findViewById<TextView>(R.id.buildStamp).text = getString(R.string.build_stamp_placeholder)
+        findViewById<TextView>(R.id.buildStamp).text =
+            getString(R.string.build_stamp, BuildConfig.GIT_SHA)
     }
 }

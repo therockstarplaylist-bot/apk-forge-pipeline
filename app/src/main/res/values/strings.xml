@@ -4,5 +4,5 @@
     <string name="mark">APK pipeline</string>
     <string name="subtitle">Debug build from GitHub Actions. Unlimited on public repos.</string>
     <string name="version_line">Version %1$s  ·  code %2$d</string>
-    <string name="build_stamp_placeholder">stamp: pending first agent loop</string>
+    <string name="build_stamp">stamp: %1$s</string>
 </resources>
