@@ -1,53 +1,47 @@
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-}
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.ApkForge" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/forge_accent</item>
+        <item name="android:statusBarColor">@color/forge_bg</item>
+        <item name="android:navigationBarColor">@color/forge_bg</item>
+        <item name="android:windowBackground">@color/forge_bg</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
 
-android {
-    namespace = "com.apkforge.pipeline"
-    compileSdk = 34
+    <style name="ForgeKey" parent="Widget.Material3.Button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/forge_fg</item>
+        <item name="backgroundTint">@color/forge_key</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
 
-    defaultConfig {
-        applicationId = "com.apkforge.pipeline"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 2
-        versionName = "1.1.0"
-        val gitSha = (System.getenv("GITHUB_SHA") ?: "local").take(7)
-        buildConfigField("String", "GIT_SHA", "\"$gitSha\"")
-    }
+    <style name="ForgeKey.Num">
+        <item name="backgroundTint">@color/forge_key</item>
+        <item name="android:textColor">@color/forge_fg</item>
+    </style>
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
-        debug {
-            applicationIdSuffix = ".debug"
-            versionNameSuffix = "-debug"
-        }
-    }
+    <style name="ForgeKey.Op">
+        <item name="backgroundTint">@color/forge_key_op</item>
+        <item name="android:textColor">@color/forge_accent</item>
+    </style>
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+    <style name="ForgeKey.Fn">
+        <item name="backgroundTint">@color/forge_key_fn</item>
+        <item name="android:textColor">@color/forge_muted</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
-    buildFeatures {
-        buildConfig = true
-    }
-}
-
-dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.activity:activity-ktx:1.9.2")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-}
+    <style name="ForgeKey.Eq">
+        <item name="backgroundTint">@color/forge_key_eq</item>
+        <item name="android:textColor">@color/forge_fg</item>
+    </style>
+</resources>

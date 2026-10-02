@@ -117,17 +117,18 @@ class MainActivity : ComponentActivity() {
         val tokens = mutableListOf<String>()
         var i = 0
         while (i < expr.length) {
-            val c = expr when {
+            val c = expr[i]
+            when {
                 c.isDigit() || c == '.' -> {
                     val start = i
-                    while (i < expr.length && (expr .isDigit() || expr == '.')) i++
+                    while (i < expr.length && (expr[i].isDigit() || expr[i] == '.')) i++
                     tokens.add(expr.substring(start, i))
                     continue
                 }
                 c == '-' && (tokens.isEmpty() || tokens.last() in listOf("+", "-", "×", "÷", "(")) -> {
                     val start = i
                     i++
-                    while (i < expr.length && (expr .isDigit() || expr == '.')) i++
+                    while (i < expr.length && (expr[i].isDigit() || expr[i] == '.')) i++
                     tokens.add(expr.substring(start, i))
                     continue
                 }
@@ -148,7 +149,7 @@ class MainActivity : ComponentActivity() {
         for (token in tokens) {
             when (token) {
                 in precedence -> {
-                    while (ops.isNotEmpty() && precedence ?: 0 >= precedence !!) {
+                    while (ops.isNotEmpty() && (precedence[ops.last()] ?: 0) >= precedence[token]!!) {
                         output.add(ops.removeLast())
                     }
                     ops.add(token)

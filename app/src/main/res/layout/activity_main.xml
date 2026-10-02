@@ -1,83 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/forge_bg"
-    android:padding="24dp">
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/mark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:letterSpacing="0.28"
-        android:text="@string/mark"
-        android:textAllCaps="true"
-        android:textColor="@color/forge_muted"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/title"
+        android:id="@+id/preview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/app_name"
-        android:textColor="@color/forge_fg"
-        android:textSize="36sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="end"
+        android:textColor="@color/forge_preview"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="12 + 3 ×" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="end"
+        android:textColor="@color/forge_display"
+        android:textSize="56sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mark" />
+        app:layout_constraintTop_toBottomOf="@id/preview"
+        tools:text="15" />
 
-    <TextView
-        android:id="@+id/subtitle"
+    <GridLayout
+        android:id="@+id/keypad"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/subtitle"
-        android:textColor="@color/forge_muted"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title" />
-
-    <LinearLayout
-        android:id="@+id/panel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/bg_panel"
-        android:orientation="vertical"
-        android:padding="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:columnCount="4"
+        android:rowCount="5"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subtitle">
+        app:layout_constraintTop_toBottomOf="@id/display">
 
-        <TextView
-            android:id="@+id/versionLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/forge_fg"
-            android:textSize="15sp" />
+        <Button
+            android:id="@+id/btn_c"
+            style="@style/ForgeKey.Op"
+            android:text="C" />
 
-        <TextView
-            android:id="@+id/buildType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/forge_accent"
-            android:textSize="15sp" />
+        <Button
+            android:id="@+id/btn_sign"
+            style="@style/ForgeKey.Op"
+            android:text="+/-" />
 
-        <TextView
-            android:id="@+id/buildStamp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="monospace"
-            android:textColor="@color/forge_muted"
-            android:textSize="13sp" />
-    </LinearLayout>
+        <Button
+            android:id="@+id/btn_pct"
+            style="@style/ForgeKey.Op"
+            android:text="%" />
+
+        <Button
+            android:id="@+id/btn_div"
+            style="@style/ForgeKey.Op"
+            android:text="÷" />
+
+        <Button
+            android:id="@+id/btn_7"
+            style="@style/ForgeKey.Num"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn_8"
+            style="@style/ForgeKey.Num"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn_9"
+            style="@style/ForgeKey.Num"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/btn_mul"
+            style="@style/ForgeKey.Op"
+            android:text="×" />
+
+        <Button
+            android:id="@+id/btn_4"
+            style="@style/ForgeKey.Num"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_5"
+            style="@style/ForgeKey.Num"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btn_6"
+            style="@style/ForgeKey.Num"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/btn_sub"
+            style="@style/ForgeKey.Op"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/btn_1"
+            style="@style/ForgeKey.Num"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_2"
+            style="@style/ForgeKey.Num"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_3"
+            style="@style/ForgeKey.Num"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_add"
+            style="@style/ForgeKey.Op"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/btn_0"
+            style="@style/ForgeKey.Num"
+            android:text="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill_horizontal" />
+
+        <Button
+            android:id="@+id/btn_dot"
+            style="@style/ForgeKey.Num"
+            android:text="." />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/ForgeKey.Op"
+            android:text="⌫" />
+
+        <Button
+            android:id="@+id/btn_eq"
+            style="@style/ForgeKey.Eq"
+            android:text="=" />
+
+    </GridLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
